@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="theme-color" content="#1a1a1a"/>
+    <link rel="manifest" href="/search_bang/manifest.json">
+    <link rel="icon" type="image/svg+xml" href="/search_bang/assets/search.svg" />
+    <link rel="stylesheet" href="/search_bang/assets/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search!</title>
+    <meta
+      name="description"
+      content="Search engines with bangs from DuckDuckGo"
+    />
+  </head>
+  <body style="background-color: #1a1a1a">
+    <div id="app"></div>
+    <script>
+      // Don't register the service worker
+      // until the page has fully loaded
+      window.addEventListener('load', () => {
+        // Is service worker available?
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/search_bang/sw.js', { scope: "/search_bang/" }).then(() => {
+            console.log('Service worker registered!');
+          }).catch((error) => {
+            console.warn('Error registering service worker:');
+            console.warn(error);
+          });
+        }
+      });
+    </script>       
+    <script type="module" src="/search_bang/assets/script.js"></script>
+  </body>
+</html>
