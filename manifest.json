@@ -3,7 +3,7 @@
     "name": "Search!",
     "short_name": "Search!",
     "description": "Search on websites with DuckDuckGo's bangs",
-    "start_url": "/",
+    "start_url": ".",
     "background_color": "#1a1a1a",
     "theme_color": "#1a1a1a",
     "orientation": "any",

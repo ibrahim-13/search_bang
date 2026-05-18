@@ -2,24 +2,60 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <base href="/search_bang/" />
     <meta name="theme-color" content="#1a1a1a"/>
-    <link rel="manifest" href="/search_bang/manifest.json">
-    <link rel="icon" type="image/svg+xml" href="/search_bang/assets/search.svg" />
-    <link rel="stylesheet" href="/search_bang/assets/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="assets/search.svg" />
+    <link rel="stylesheet" href="assets/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search!</title>
-    <meta
-      name="description"
-      content="Search engines with bangs from DuckDuckGo"
-    />
+    <meta name="description" content="Search engines with bangs from DuckDuckGo" />
   </head>
   <body style="background-color: #1a1a1a">
-    <div id="app"></div>
+    <div id="app" style="display: none;">
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div class="content-container">
+          <h1>Search!</h1>
+          <p>Search on websites with DuckDuckGo's bangs.</p>
+          <div class="url-container">
+            <input type="text" id="urlInput" class="url-input" value="" readonly />
+            <button id="copyButton" class="copy-button">
+              <img id="copyIcon" src="assets/clipboard.svg" alt="Copy" />
+            </button>
+          </div>
+          <div class="info_container">
+            <h2>Bangs:</h2>
+            <table id="bangsTable"></table>
+            <table>
+              <tr><td>Name</td><td>Key</td><td>Url</td><td></td></tr>
+              <tr>
+                <td><input id="addName" type="text"></td>
+                <td><input id="addKey" type="text"></td>
+                <td><input id="addUrl" type="text"></td>
+                <td>
+                  <div class="item-row">
+                    <button id="addBangBtn">Add</button>
+                    <button id="clearFormBtn" class="icon-button"><img src="assets/xmark.svg" alt="Clear" /></button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <p>Search Url Format: <code>https://example.com/search?q={{{s}}}</code></p>
+            <button id="resetBtn" style="margin-top: 7px;"><u>Reset To Default</u></button>
+            <button id="updateSwBtn"><u>Trigger SW Update</u></button>
+          </div>
+        </div>
+        <footer class="footer">
+          <a href="https://github.com/ibrahim-13/search_bang" target="_blank">ibrahim-13/search_bang</a>
+          •
+          <a href="https://github.com/irsyadpage/unduck/tree/dark-mode" target="_blank">irsyadpage/unduck</a>
+          •
+          <a href="https://github.com/t3dotgg/unduck" target="_blank">t3dotgg/unduck</a>
+        </footer>
+      </div>
+    </div>
     <script>
-      // Don't register the service worker
-      // until the page has fully loaded
       window.addEventListener('load', () => {
-        // Is service worker available?
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker.register('/search_bang/sw.js', { scope: "/search_bang/" }).then(() => {
             console.log('Service worker registered!');
@@ -29,7 +65,7 @@
           });
         }
       });
-    </script>       
-    <script type="module" src="/search_bang/assets/script.js"></script>
+    </script>
+    <script type="module" src="assets/script.js"></script>
   </body>
 </html>

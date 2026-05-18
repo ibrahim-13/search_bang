@@ -1,4 +1,4 @@
-const CACHE_NAME = `search-bang-v7`;
+const CACHE_NAME = `search-bang-v8.1`;
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
@@ -6,12 +6,12 @@ self.addEventListener('install', (event) => {
     // Add all the assets in the array to the 'CACHE_NAME'
     // `Cache` instance for later use.
     return cache.addAll([
-      '/search_bang/',
-      '/search_bang/assets/script.js',
-      '/search_bang/assets/styles.css',
-      '/search_bang/assets/clipboard-check.svg',
-      '/search_bang/assets/clipboard.svg',
-      '/search_bang/assets/search.svg',
+      './',
+      './assets/script.js',
+      './assets/styles.css',
+      './assets/clipboard-check.svg',
+      './assets/clipboard.svg',
+      './assets/search.svg',
     ]);
   }));
 });
